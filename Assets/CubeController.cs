@@ -25,13 +25,6 @@ public class CubeController : MonoBehaviour
         //キューブを移動させる
         transform.Translate(this.speed * Time.deltaTime, 0, 0);
 
-        //キューブの設置状態確認
-        bool isGround = (transform.position.y == this.groundLevel) ? false : true;
-
-
-        //キューブ接地時に効果音を鳴らす
-        GetComponent<AudioSource>().volume = (isGround) ? 1 : 0;
-
 
         //画面外に出たら破棄する
         if (transform.position.x < this.deadLine)
@@ -43,7 +36,7 @@ public class CubeController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter2D(Collision2D other)
     {
 
         //　キューブと地面に衝突した場合
